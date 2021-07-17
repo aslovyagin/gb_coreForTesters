@@ -1,6 +1,6 @@
-package entities;
+package competitors;
 
-public class Robot extends Entity {
+public class Robot extends Competitor {
     public Robot(int maxDistance, int maxHeigh) {
         super(maxDistance, maxHeigh);
     }

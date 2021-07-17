@@ -12,7 +12,7 @@ abstract public class Obstacle {
         return limit;
     }
 
-    public void setL(int limit) {
+    public void setLimit(int limit) {
         this.limit = limit;
     }
 }

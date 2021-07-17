@@ -1,12 +1,12 @@
 package utils;
 
-import entities.Entity;
+import competitors.Competitor;
 import obstacles.*;
 
 public class Competition {
 
-    public static void compete(Entity[] entities, Obstacle[] obctacles) {
-        for (Entity entity : entities) {
+    public static void compete(Competitor[] entities, Obstacle[] obctacles) {
+        for (Competitor entity : entities) {
             for (Obstacle obctacle : obctacles) {
                 if (!entity.isCompetitine()) {
                     System.out.println(entity + "выбыл");

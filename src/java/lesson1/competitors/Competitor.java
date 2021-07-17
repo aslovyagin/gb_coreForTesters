@@ -1,15 +1,17 @@
-package entities;
+package competitors;
 
 import interfaces.Jumpable;
 import interfaces.Runnable;
 import obstacles.*;
 
-abstract public class Entity implements Jumpable, Runnable {
+
+
+abstract public class Competitor implements Jumpable, Runnable {
     int maxDistance;
     int maxHeigh;
     boolean isCompetitine = true;
 
-    public Entity(int maxDistance, int maxHeigh) {
+    public Competitor(int maxDistance, int maxHeigh) {
         this.maxDistance = maxDistance;
         this.maxHeigh = maxHeigh;
     }
@@ -38,7 +40,7 @@ abstract public class Entity implements Jumpable, Runnable {
         this.maxHeigh = maxHeigh;
     }
 
-    public void jumn(Wall wall) {
+    public void jump(Wall wall) {
         System.out.println("Я начал прыгать, максимальная высота " + maxHeigh);
         if (maxHeigh >= wall.getLimit()) {
             System.out.println("Перепрыгнул");

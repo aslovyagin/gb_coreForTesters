@@ -7,12 +7,11 @@ public class AppData {
     public void loadData(String fileName) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
             header = bufferedReader.readLine().split(";");
-            data = new Integer[countLines(fileName)][header.length];
+            data = new Integer[countLines(fileName)-1][header.length];
             String tempString;
-            for (int i = 0; i < data.length - 1; i++) {
+            for (int i = 0; i < data.length ; i++) {
                 tempString = bufferedReader.readLine();
                 for (int j = 0; j < data[i].length; j++) {
-                    System.out.println(tempString.split(";")[j]);
                     data[i][j] = Integer.parseInt(tempString.split(";")[j]);
                 }
             }

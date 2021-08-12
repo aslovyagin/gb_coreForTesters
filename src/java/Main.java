@@ -1,16 +1,36 @@
-import Forecast.Weather;
-
-import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        System.out.println(new Weather().getWeatherByLocationId(332287, "gl8OMsu0aYxcJ1HovrX6VHOLfJP6DSgV").body().string());
+    public static void main(String[] args) {
+    }
+
+    public static List<Course> uniqueCorsesByStudents(List<Student> listStudents) {
+        return listStudents.stream().
+                map(o -> o.getListOfCourses())
+                .flatMap(o -> o.stream())
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    public static List<Student> topThreeStudentsByCountOfCourses(List<Student> listStudents) {
+        return listStudents.stream().sorted((s1, s2) -> s2.getListOfCourses().size() - s1.getListOfCourses().size())
+                .limit(3)
+                .collect(Collectors.toList());
+    }
+
+    public static List<Student> listOfStudentsByCourse(List<Student> listStudents, Course course) {
+        return listStudents.stream()
+                .filter(o -> o.getListOfCourses().contains(course))
+                .collect(Collectors.toList());
     }
 }
 /*
-С помощью http запроса получить в виде json строки погоду в Санкт-Петербурге (или любом другом городе) на период времени
-, пересекающийся со следующим занятием (например, выборка погода на следующие 5 дней - подойдет)
-Подобрать источник самостоятельно. Можно использовать api accuweather, порядок следующий: зарегистрироваться,
-зарегистрировать тестовое приложение для получения api ключа, найдите нужный endpoint и изучите документацию. Бесплатный
-тарифный план предполагает получение погоды не более чем на 5 дней вперед (этого достаточно для выполнения д/з).
- */
+Написать функцию, принимающую список Student и возвращающую список уникальных курсов, на которые подписаны студенты.
+
+Написать функцию, принимающую на вход список Student и возвращающую список из трех самых любознательных (любознательность
+определяется количеством курсов).
+
+Написать функцию, принимающую на вход список Student и экземпляр Course, возвращающую список студентов, которые посещают
+этот курс.
+*/
